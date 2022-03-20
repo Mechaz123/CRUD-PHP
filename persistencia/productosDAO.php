@@ -36,7 +36,12 @@ class productosDAO{
     }
     
     public function consultarporID(){
-        return "SELECT * FROM productos WHERE id='" . $this -> id ."'";
+        return "SELECT id, codigo, producto, stock, valor_unidad, valor_total, DATE_FORMAT(fecha_registro,'%Y-%m-%dT%H:%i' ) FROM productos WHERE id='" . $this -> id ."'";
+    }
+    
+    public function actualizarProducto(){
+        return "UPDATE productos 
+                SET codigo = '" . $this -> codigo ."', producto = '" . $this -> producto ."' , stock = '" . $this -> stock ."', valor_unidad = '" . $this -> valor_unidad ."', valor_total = '" . $this -> valor_total ."', fecha_registro = '" . $this -> fecha_registro ."' WHERE id='" . $this -> id ."'";
     }
 }
 ?>

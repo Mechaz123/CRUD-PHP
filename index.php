@@ -3,7 +3,10 @@
     
     $productos = new productos();
     $error=0;
-    if(!empty($_GET['id'])){
+    if(!empty($_POST['update'])){
+        $update = new productos($_GET['id'], $_POST['codigo'], $_POST['producto'], $_POST['stock'], $_POST['valor_unidad'], $_POST['valor_total'], $_POST['fecha_ingreso']);
+        $update -> actualizarProducto();
+    }else if(!empty($_GET['id'])){
         $eliminar = new productos($_GET['id']);
         $eliminar -> eliminarProducto();
     }
@@ -18,6 +21,7 @@
             $registro -> insertarProducto();
         }
     }
+    
     $resultados = $productos -> consultarTodos();
 ?>
 <html lang="es">

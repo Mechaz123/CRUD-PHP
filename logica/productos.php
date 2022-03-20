@@ -163,6 +163,11 @@ class productos{
         $this -> valor_unidad = $datos[4];
         $this -> valor_total = $datos[5];
         $this -> fecha_registro = $datos[6];
+    }
+    
+    public function actualizarProducto(){
+        $this -> conexion -> abrir();
+        $this -> conexion -> ejecutar($this -> productosDAO -> actualizarProducto());
         $this -> conexion -> cerrar();
     }
 

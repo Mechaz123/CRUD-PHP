@@ -1,5 +1,6 @@
 <?php
 require_once 'logica/productos.php';
+
 $producto = new productos($_GET['id']);
 $producto -> consultarporID();
 ?>
@@ -15,9 +16,9 @@ $producto -> consultarporID();
 	</head>
 	<body>
 		<div class="container">
-			<h2 class="text-center">Editar Registro</h2>
-			<form action="index.php" method="post">
-				<input type="hidden" id="form" name="form" value="form">
+			<h2 class="text-center"><a class="btn btn-danger" href="index.php">Volver</a> Editar Registro</h2>
+			<form action=<?php echo "index.php?id=" . $producto -> getId()?> method="post">
+				<input type="hidden" id="update" name="update" value="update">
 				<div class="form-group">
 					<label>Codigo: </label>
 					<input class="form-control"type="number" id="codigo" name="codigo" placeholder="codigo" required value=<?php echo '"' . $producto -> getCodigo() . '"'?>>
@@ -39,7 +40,7 @@ $producto -> consultarporID();
 					<input class="form-control"type="number" id="valor_total" name="valor_total" placeholder="valor total" value=<?php echo '"' . $producto -> getValor_total() . '"'?>>
 				</div>
 				<div class="form-group">
-					<label>Fecha ingreso: </label>
+					<label>Fecha ingreso:</label>
 					<input class="form-control"type="datetime-local" id="fecha_ingreso" name="fecha_ingreso" placeholder="fecha ingreso" value=<?php echo '"' . $producto -> getFecha_registro() . '"'?>>
 				</div>
 				<input class="btn btn-success" type ="submit">
